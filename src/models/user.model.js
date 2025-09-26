@@ -1,4 +1,4 @@
-const {moongoose, Schema} = require('mongoose');
+const {mongoose, Schema} = require('mongoose');
 
 const userSchema = Schema({
    
@@ -33,6 +33,6 @@ const userSchema = Schema({
 
 
 
-const User = moongoose.model('User', userSchema);
+const UserModel = mongoose.model("User", userSchema);
 
-module.exports = User;
+module.exports = UserModel;

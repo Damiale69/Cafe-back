@@ -1,16 +1,17 @@
 const express = require('express');
 const {check}= require('express-validator');
 const userRouter = express.Router();
-const { createUserController } = require('../controller/user.controller');
-const validatorMiddleware = require('../utils/validator');
-const repeatPasswordMiddleware= require('../utils/repeatPassword');
+const { createUserController } = require('../controller/userController');
+const { validatorMiddleware } = require('../utils/validator');
+const {repeatPasswordMiddleware}= require('../utils/repeatPassword');
 
 userRouter.get('/saludar', (request , response )=>{
-    response.send('hola desde ruta de prueba')
+    response.send('hola desde ruta de prueba');
 })
 
 
-userRouter.post('/ ',
+userRouter.post('/',
+[
     check("email")
          .isEmail()
          .withMessage("El email debe ser un email valido"),
@@ -22,10 +23,12 @@ userRouter.post('/ ',
          .withMessage("La contraseña debe tener entre 8 y 20 caracteres")
          .matches(/\d/)
          .withMessage("La contraseña debe contener al menos un numero"),
-         validatorMiddleware,
-         repeatPasswordMiddleware,
-    crateUserController) 
 
+ ],
+    validatorMiddleware,
+    repeatPasswordMiddleware,
+    createUserController,
 
+);
 
 module.exports = userRouter;

@@ -1,4 +1,4 @@
-const { request } = require("express");
+const express = require("express");
 const { validationResult} = require("express-validator");
 
 
@@ -11,8 +11,8 @@ const validatorMiddleware = async (request, response, next) => {
 
     }
 
-    next()
+    next();
 
-}
+};
 
-module.exports = validatorMiddleware;
+module.exports =  validatorMiddleware;
