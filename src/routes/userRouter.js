@@ -5,6 +5,8 @@ const { createUserController } = require('../controller/userController');
 const { validatorMiddleware } = require('../utils/validator');
 const {repeatPasswordMiddleware}= require('../utils/repeatPassword');
 
+console.log('types:', typeof validatorMiddleware, typeof repeatPasswordMiddleware, typeof createUserController);
+
 userRouter.get('/saludar', (request , response )=>{
     response.send('hola desde ruta de prueba');
 })

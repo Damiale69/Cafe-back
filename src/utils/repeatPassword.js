@@ -12,4 +12,4 @@ const repeatPasswordMiddleware = (request, response, next) => {
     next()
 }
 
-module.exports = repeatPasswordMiddleware;
+module.exports = {repeatPasswordMiddleware};
